@@ -19,7 +19,7 @@ export default function Home() {
             Collect Moments, not Things!
           </p>
           <Link to="/upload" className="flex justify-center">
-            <button className="rounded-md bg-stone-700 px-4 py-2 font-bold text-white hover:bg-stone-500">
+            <button className="rounded-md bg-stone-900 px-4 py-2 font-bold text-white hover:bg-stone-700">
               Start now
             </button>
           </Link>
