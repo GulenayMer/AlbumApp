@@ -27,7 +27,7 @@ const handleSubmit = (e) => {
 };
 
 return (
-<form onSubmit={handleSubmit}>
+<form onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
 	<div>
 		<label htmlFor="image" className="block mb-2">
 			Select Image:
@@ -71,7 +71,7 @@ return (
 	<div className="mt-4">
 		<button
 			type="submit"
-			className="bg-blue text-white px-4 py-2 w-80 rounded-md">
+			className="bg-blue-800 text-white px-4 py-2 w-80 rounded-md">
 		Upload
 		</button>
 	</div>

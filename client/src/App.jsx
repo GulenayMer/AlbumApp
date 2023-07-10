@@ -1,4 +1,4 @@
-import './App.css'
+
 //import Home from './components/Home'
 import Upload from './components/Upload'
 /* import About from './components/About'
