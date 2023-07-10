@@ -1,15 +1,15 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+
 export default function Album() {
   const [images, setImages] = useState([]);
 
-  useEffect((req, res) => {
+  useEffect(() => {
     axios
       .get("http://localhost:3000/images")
       .then((response) => {
         console.log(response.data);
         setImages(response.data);
-        //console.log(response.data)
       })
       .catch((err) => {
         console.log(err);
@@ -17,15 +17,14 @@ export default function Album() {
   }, []);
 
   return (
-    <>
-      {images &&
-        images.map((image) => (
-          <div className="flex: 1 1 auto">
-          <div key={image._id}>
-            <img src={image.image} alt={image.information} className="w-64"/>
+    <div>
+      {images.map((image) => (
+        <div className="grid grid-cols-4 gap-4" key={image._id}>
+          <div>
+            <img src={image.image} alt={image.information} className="w-64" />
           </div>
-          </div>
-        ))}
-    </>
+        </div>
+      ))}
+    </div>
   );
 }

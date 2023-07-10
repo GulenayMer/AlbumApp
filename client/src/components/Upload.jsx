@@ -1,15 +1,12 @@
-import { useState } from "react";
-import axios, { Axios } from "axios";
+import React, { useState } from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
+
 const Upload = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [information, setInformation] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm();
@@ -32,14 +29,13 @@ const Upload = () => {
     console.log(data);
   };
 
-
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col justify-center items-center"
+      className="flex h-screen flex-col items-center justify-center bg-stone-400"
     >
       <div>
-        <label htmlFor="image" className="block mb-2">
+        <label htmlFor="image" className="mb-2 block">
           Select Image:
         </label>
         <input
@@ -47,58 +43,42 @@ const Upload = () => {
           id="image"
           accept="image/*"
           {...register("image", { required: true })}
-          className="border border-gray-300 px-4 py-2 rounded-md w-80"
+          className="w-80 rounded-md border border-gray-800 bg-stone-100 px-4 py-2"
         />
       </div>
       <div className="mt-4">
-        <label htmlFor="information" className="block mb-2">
+        <label htmlFor="information" className="mb-2 block">
           Information:
         </label>
         <input
           type="text"
           id="information"
           {...register("information", { required: true })}
-          //   value={information}
-          //   onChange={handleInformationChange}
-          className="border border-gray-300 px-4 py-2 rounded-md w-80"
+          className="w-80 rounded-md border border-gray-800 px-4 py-2"
         />
       </div>
 
       <div className="mt-4">
-        <label htmlFor="category" className="block mb-2">
+        <label htmlFor="category" className="mb-2 block">
           Select Category:
         </label>
         <select
           id="category"
-          //   value={selectedCategory}
           {...register("category", { required: true })}
-          //   onChange={handleCategoryChange}
-          className="border border-gray-300 px-4 py-2 rounded-md w-80"
+          className="w-80 rounded-md border border-gray-800 px-4 py-2"
         >
-          <option className="text-slate" value="">
-            Select a category
-          </option>
-          <option className="text-slate" value={"family"}>
-            family
-          </option>
-          <option className="text-slate" value={"animals"}>
-            animals
-          </option>
-          <option className="text-slate" value={"vacation"}>
-            Vacation
-          </option>
-          <option className="text-slate" value={"party"}>
-            Party
-          </option>
-          <option className="text-slate" value={"various"}>
-            Various
-          </option>
+          <option value="">Select a category</option>
+          <option value="family">Family</option>
+          <option value="animals">Animals</option>
+          <option value="vacation">Vacation</option>
+          <option value="party">Party</option>
+          <option value="various">Various</option>
         </select>
       </div>
       <div className="mt-4">
         <button
           type="submit"
-          className="bg-blue-800 text-white px-4 py-2 w-80 rounded-md"
+          className="w-80 cursor-pointer rounded-md bg-stone-700 px-4 py-2 text-stone-50 hover:bg-stone-500"
         >
           Upload
         </button>
