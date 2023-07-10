@@ -1,17 +1,23 @@
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Upload from "./components/Upload";
+import Album from "./components/Album";
+import About from "./components/About";
 
-//import Home from './components/Home'
-import Upload from './components/Upload'
-/* import About from './components/About'
-import Album from './components/Album' */
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-
-
-return (
-	<>
-	<Upload></Upload>
-	</>
-)
+  return (
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/upload" element={<Upload />} />
+        <Route path="/my-albums" element={<Album />} />
+        <Route path="/about-us" element={<About />} />
+      </Routes>
+    </div>
+  );
 }
 
-export default App
+export default App;
