@@ -20,9 +20,10 @@ export default function Album() {
     <>
       {images &&
         images.map((image) => (
+          <div className="flex: 1 1 auto">
           <div key={image._id}>
-            {" "}
             <img src={image.image} alt={image.information} className="w-64"/>
+          </div>
           </div>
         ))}
     </>
