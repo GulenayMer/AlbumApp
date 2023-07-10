@@ -78,7 +78,7 @@ const Upload = () => {
       <div className="mt-4">
         <button
           type="submit"
-          className="w-80 cursor-pointer rounded-md bg-stone-700 px-4 py-2 text-stone-50 hover:bg-stone-500"
+          className="w-80 cursor-pointer rounded-md bg-stone-900 px-4 py-2 text-stone-50 hover:bg-stone-700"
         >
           Upload
         </button>
