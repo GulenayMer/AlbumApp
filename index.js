@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv/config");
 /////////////////
 //REQUIRE ROUTERS
 const albumRouter = require("./routes/images");
-require("dotenv/config");
 require("./db");
 //
 //

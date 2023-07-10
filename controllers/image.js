@@ -1,15 +1,20 @@
 const Image = require("../models/image");
+const fs = require("fs")
 
 const createImage = async (req, res) => {
   try {
-    const { imageUrl, information, category } = req.body;
+    const { information, category, createdAt } = req.body;
+    console.log(req.file)
     const image = await Image.create({
-      imageUrl: req.file.filename,
+
+      image: req.file.secure_url,
       information,
       category,
       createdAt,
     });
 
+    fs.unlinkSync(req.file.localPath)
+    
     res.status(201).json(image);
   } catch (err) {
     console.log(err);
