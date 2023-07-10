@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios, { Axios } from "axios";
 import { useForm } from "react-hook-form";
-
+import categoryArr from "../categoryArr";
 const Upload = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [information, setInformation] = useState("");
@@ -11,6 +11,7 @@ const Upload = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -20,36 +21,19 @@ const Upload = () => {
     formData.append("information", data.information);
     formData.append("category", data.category);
 
-    axios.post("http://localhost:3000/images", formData)
-			.then((res)=>{
-				console.log(res.data)
-			})
-			.catch((err)=>{
-				console.log(err)
-			});
-			console.log(data)
+    axios
+      .post("http://localhost:3000/images", formData)
+      .then((res) => {
+        console.log(res.data);
+        reset();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(data);
   };
 
-  // const handleImageChange = (e) => {
-  // 	const file = e.target.files[0];
-  // 	setSelectedImage(file);
-  // };
-
-  // const handleInformationChange = (e) => {
-  // 	setInformation(e.target.value);
-  // };
-
-  // const handleCategoryChange = (e) => {
-  // 	setSelectedCategory(e.target.value);
-  // };
-
-  // const handleSubmit = (e) => {
-  // 	e.preventDefault();
-  // 	setSelectedImage(null);
-  // 	setInformation('');
-  // 	setSelectedCategory('');
-  // 	console.log(e)
-  // };
+  // console.log(categoryArr)
 
   return (
     <form
@@ -82,14 +66,14 @@ const Upload = () => {
           className="border border-gray-300 px-4 py-2 rounded-md w-80"
         />
       </div>
-     
-	 <div className="mt-4">
+
+      <div className="mt-4">
         <label htmlFor="category" className="block mb-2">
           Select Category:
         </label>
         <select
           id="category"
-        //   value={selectedCategory}
+          //   value={selectedCategory}
           {...register("category", { required: true })}
           //   onChange={handleCategoryChange}
           className="border border-gray-300 px-4 py-2 rounded-md w-80"
@@ -97,8 +81,11 @@ const Upload = () => {
           <option className="text-slate" value="">
             Select a category
           </option>
+          <option className="text-slate" value="family">
+            family
+          </option>
           <option className="text-slate" value="animals">
-            Animals
+            animals
           </option>
           <option className="text-slate" value="vacation">
             Vacation
@@ -106,9 +93,14 @@ const Upload = () => {
           <option className="text-slate" value="party">
             Party
           </option>
-          <option className="text-slate" value="family">
-            Family
+          <option className="text-slate" value="various">
+            Various
           </option>
+          {/* {categoryArr.map((cat) => {
+            <option className="text-slate" value={cat}>
+              {cat}
+            </option>;
+          })} */}
         </select>
       </div>
       <div className="mt-4">
