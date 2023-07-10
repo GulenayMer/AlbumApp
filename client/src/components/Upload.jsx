@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios, { Axios } from "axios";
 import { useForm } from "react-hook-form";
-import categoryArr from "../categoryArr";
 const Upload = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [information, setInformation] = useState("");
@@ -23,8 +22,8 @@ const Upload = () => {
 
     axios
       .post("http://localhost:3000/images", formData)
-      .then((res) => {
-        console.log(res.data);
+      .then((response) => {
+        console.log(response.data);
         reset();
       })
       .catch((err) => {
@@ -33,7 +32,6 @@ const Upload = () => {
     console.log(data);
   };
 
-  // console.log(categoryArr)
 
   return (
     <form
@@ -49,7 +47,6 @@ const Upload = () => {
           id="image"
           accept="image/*"
           {...register("image", { required: true })}
-          // onChange={handleImageChange}
           className="border border-gray-300 px-4 py-2 rounded-md w-80"
         />
       </div>
@@ -81,26 +78,21 @@ const Upload = () => {
           <option className="text-slate" value="">
             Select a category
           </option>
-          <option className="text-slate" value="family">
+          <option className="text-slate" value={"family"}>
             family
           </option>
-          <option className="text-slate" value="animals">
+          <option className="text-slate" value={"animals"}>
             animals
           </option>
-          <option className="text-slate" value="vacation">
+          <option className="text-slate" value={"vacation"}>
             Vacation
           </option>
-          <option className="text-slate" value="party">
+          <option className="text-slate" value={"party"}>
             Party
           </option>
-          <option className="text-slate" value="various">
+          <option className="text-slate" value={"various"}>
             Various
           </option>
-          {/* {categoryArr.map((cat) => {
-            <option className="text-slate" value={cat}>
-              {cat}
-            </option>;
-          })} */}
         </select>
       </div>
       <div className="mt-4">

@@ -22,7 +22,7 @@ export default function Album() {
         images.map((image) => (
           <div key={image._id}>
             {" "}
-            <img src={image.image} alt={image.information} />
+            <img src={image.image} alt={image.information} className="w-64"/>
           </div>
         ))}
     </>
